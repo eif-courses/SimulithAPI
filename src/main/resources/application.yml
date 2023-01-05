@@ -1,0 +1,30 @@
+debug: false
+server:
+  port: 3000
+
+auth0:
+  # Replace with the API Identifier for your Auth0 API.
+  audience: https://hello-world.example.com
+
+# The following is standard Spring Security OAuth2 configuration.
+spring:
+  sql:
+    init:
+      platform: postgres
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: root
+    driverClassName: org.postgresql.Driver
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          # Replace with the domain of your Auth0 tenant.
+          # Note the trailing slash is important!
+          issuer-uri: https://dev-uu-j3lw4.eu.auth0.com/
