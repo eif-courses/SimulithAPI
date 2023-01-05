@@ -3,18 +3,22 @@ package eif.viko.lt.simulith.webapp.controller;
 import eif.viko.lt.simulith.webapp.model.Person;
 import eif.viko.lt.simulith.webapp.service.PeopleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.util.List;
+import java.net.URI;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/people")
+@RequestMapping(value = "/api/people", produces = MediaType.APPLICATION_JSON_VALUE)
+@CrossOrigin(origins = "*")
 public class PeopleApiController {
 
-    final
-    PeopleService peopleService;
+    final PeopleService peopleService;
 
+    @Autowired
     public PeopleApiController(PeopleService peopleService) {
         this.peopleService = peopleService;
     }
@@ -29,15 +33,14 @@ public class PeopleApiController {
         return peopleService.findById(id);
     }
 
-    @PostMapping("")
-    public String addPerson(@RequestBody Person person) {
+    @PostMapping(value = "")
+    public ResponseEntity<Object> addPerson(@RequestBody Person person) {
+        long id = peopleService.insert(person);
 
-        if(person != null) {
-            peopleService.insert(person);
-            return "Added a person";
-        } else {
-            return "Request does not contain a body";
-        }
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(id).toUri();
+        return ResponseEntity.created(location).build();
+        //return "ADDED TO DB";
     }
 
     @DeleteMapping("{id}")
@@ -48,7 +51,7 @@ public class PeopleApiController {
 
     @PutMapping("")
     public String updatePerson(@RequestBody Person person) {
-        if(person != null) {
+        if (person != null) {
             peopleService.update(person);
             return "Updated person.";
         } else {

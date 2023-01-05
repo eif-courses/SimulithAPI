@@ -3,16 +3,16 @@ package eif.viko.lt.simulith.webapp.service;
 import eif.viko.lt.simulith.webapp.model.Person;
 import eif.viko.lt.simulith.webapp.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
 public class PeopleServiceImpl implements PeopleService{
+    private final PersonRepository repository;
 
-    final PersonRepository repository;
-
+    @Autowired
     public PeopleServiceImpl(PersonRepository repository) {
         this.repository = repository;
     }
@@ -28,8 +28,9 @@ public class PeopleServiceImpl implements PeopleService{
     }
 
     @Override
-    public Person insert(Person p) {
-        return repository.save(p);
+    public long insert(Person p) {
+        repository.save(p);
+        return p.getId();
     }
 
     @Override

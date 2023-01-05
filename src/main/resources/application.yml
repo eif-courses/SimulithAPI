@@ -8,6 +8,11 @@ auth0:
 
 # The following is standard Spring Security OAuth2 configuration.
 spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: root
+    driverClassName: org.postgresql.Driver
   sql:
     init:
       platform: postgres
@@ -15,12 +20,8 @@ spring:
     database: POSTGRESQL
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
-  datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: root
-    driverClassName: org.postgresql.Driver
+      use-new-id-generator-mappings: false
+      ddl-auto: none
   security:
     oauth2:
       resource-server:

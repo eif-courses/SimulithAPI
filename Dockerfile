@@ -6,4 +6,4 @@ ADD . /tmp
 RUN gradle build
 
 CMD ["gradle", "clean", "bootRun"]
-EXPOSE 3010
+EXPOSE 3000

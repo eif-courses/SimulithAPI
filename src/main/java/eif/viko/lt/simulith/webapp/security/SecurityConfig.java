@@ -30,10 +30,14 @@ public class SecurityConfig {
         */
         http.authorizeRequests()
                 .mvcMatchers("/api/public").permitAll()
+                .mvcMatchers("/api/people").permitAll()
                 .mvcMatchers("/api/private").authenticated()
                 .mvcMatchers("/api/private-scoped").hasAuthority("read:admin-messages")
                 .and().cors()
                 .and().oauth2ResourceServer().jwt();
+
+        http.csrf().disable();
+
         return http.build();
     }
 
