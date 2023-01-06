@@ -24,7 +24,7 @@ public class DropboxApiController {
 
     @GetMapping("")
     public String getFolderDetails(){
-        Metadata metadata = dropboxService.getFolderDetails("simulith");
+        Metadata metadata = dropboxService.getFolderDetails("simulith/");
         return metadata.getName();
     }
     @PostMapping("/upload")
@@ -32,6 +32,6 @@ public class DropboxApiController {
         ByteArrayInputStream inputStream = new ByteArrayInputStream(file.getBytes());
         FileMetadata fm = dropboxService.uploadFile(filePath, inputStream);
         inputStream.close();
-        return "You successfully uploaded " + filePath + "!!"+ fm.getName();
+        return "You successfully uploaded " + filePath + "= "+ fm.getPathLower();
     }
 }
