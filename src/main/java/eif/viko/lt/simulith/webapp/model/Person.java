@@ -1,8 +1,5 @@
 package eif.viko.lt.simulith.webapp.model;
 
-
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 
 @Entity
