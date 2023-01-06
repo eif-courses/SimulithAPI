@@ -24,8 +24,8 @@ public class DropboxApiController {
 
     @GetMapping("")
     public String getFolderDetails(){
-        Metadata metadata = dropboxService.getFolderDetails("simulith/");
-        return metadata.getName();
+        Metadata metadata = dropboxService.getFolderDetails("/marius");
+        return metadata.toStringMultiline();
     }
     @PostMapping("/upload")
     public String handleFileUpload(@RequestParam("file") MultipartFile file, @RequestParam("filePath") String filePath) throws Exception {
