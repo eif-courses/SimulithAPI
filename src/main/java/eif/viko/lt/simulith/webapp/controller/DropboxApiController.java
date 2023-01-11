@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-
 @RestController
 @RequestMapping(value = "/api/dropbox", produces = MediaType.APPLICATION_JSON_VALUE)
 @CrossOrigin(origins = "*")

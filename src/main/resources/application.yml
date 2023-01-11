@@ -6,7 +6,7 @@ auth0:
   # Replace with the API Identifier for your Auth0 API.
   audience: https://hello-world.example.com
 dropbox:
-  accessToken: sl.BWa0KUNXgw3TrFDW74u1WA4OQhv1k4T9H90taJW-CzamjrC5efg-KHiWHbAVTC8bxRV3HhJKv_QGpFhbMT50uDk63e6D_BC8AoCZrlvncZVp3lIKfeSZOkGzmhJrLUwP-aaJMBH1zPTO
+  accessToken: sl.BWpsZSB5E042ScaY2NtZn2zR9OS2GKobWtX_Ifc6rqGAwTvFIYmREcwyjN99qXEzvhXhU-GVw8gGwEH9kOerWXqMbd4qsBVSOtt0A5c9l22s-MKyWP2zclRgaBos2Qv1MJ5jtUCwXpOV
 # The following is standard Spring Security OAuth2 configuration.
 spring:
   datasource:
@@ -22,7 +22,7 @@ spring:
     show-sql: true
     hibernate:
       use-new-id-generator-mappings: false
-      ddl-auto: none
+      ddl-auto: update
   security:
     oauth2:
       resource-server:
