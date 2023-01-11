@@ -21,8 +21,10 @@ spring:
     database: POSTGRESQL
     show-sql: true
     hibernate:
-      use-new-id-generator-mappings: false
-      ddl-auto: create-drop
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
   security:
     oauth2:
       resource-server:
