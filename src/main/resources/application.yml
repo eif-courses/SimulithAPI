@@ -10,9 +10,9 @@ dropbox:
 # The following is standard Spring Security OAuth2 configuration.
 spring:
   datasource:
-    url: jdbc:postgresql://${{ PGUSER }}:${{ PGPASSWORD }}@${{ PGHOST }}:${{ PGPORT }}/${{ PGDATABASE }}
-    username: ${{ PGUSER }}
-    password: ${{ PGPASSWORD }}
+    url: jdbc:postgresql://${PGUSER}:${PGPASSWORD}@${PGHOST}:${PGPORT}/${PGDATABASE}
+    username: ${PGUSER}
+    password: ${PGPASSWORD}
     driverClassName: org.postgresql.Driver
   sql:
     init:
